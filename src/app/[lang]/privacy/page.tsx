@@ -132,12 +132,15 @@ export function generateStaticParams() {
   ] as const
 }
 
-export default function Privacy({
-  params: { lang },
-}: {
+export default function Privacy(props: {
   params: { lang: Locale }
 }) {
+  const { params: { lang } } = props
   const content = privacyContent[lang]
+
+  if (!content) {
+    return null
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">

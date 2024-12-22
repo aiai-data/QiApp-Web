@@ -31,7 +31,7 @@ const termsContent = {
         content: [
           '关于QiApp提供的健康建议：',
           '• 建议仅供参考，不构成医疗诊断',
-          '• 用户应在专业医生指导��使用',
+          '• 用户应在专业医生指导下使用',
           '• 如有疾病症状应及时就医',
           '• 我们不对用户自行判断承担责任'
         ]
@@ -124,12 +124,15 @@ export function generateStaticParams() {
   ] as const
 }
 
-export default function Terms({
-  params: { lang },
-}: {
+export default function Terms(props: {
   params: { lang: Locale }
 }) {
+  const { params: { lang } } = props
   const content = termsContent[lang]
+
+  if (!content) {
+    return null
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
