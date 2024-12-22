@@ -1,0 +1,21 @@
+qiapp-website/
+├── public/
+│   ├── images/
+│   └── locales/
+├── src/
+│   ├── app/
+│   │   └── [lang]/
+│   │       ├── globals.css
+│   │       ├── layout.tsx
+│   │       ├── loading.tsx
+│   │       ├── not-found.tsx
+│   │       ├── page.tsx
+│   │       ├── privacy/
+│   │       │   └── page.tsx
+│   │       └── terms/
+│   │           └── page.tsx
+│   ├── components/
+│   │   └── Navigation.tsx
+│   ├── constants/
+│   │   └── locales.ts
+│   └── middleware.ts 
