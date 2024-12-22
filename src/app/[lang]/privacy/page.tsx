@@ -125,18 +125,12 @@ const privacyContent = {
   }
 }
 
-export function generateStaticParams() {
-  return [
-    { lang: 'zh-CN' },
-    { lang: 'en-US' }
-  ] as const
-}
-
-export default function Privacy(props: {
+export default function Privacy({
+  params,
+}: {
   params: { lang: Locale }
 }) {
-  const { params: { lang } } = props
-  const content = privacyContent[lang]
+  const content = privacyContent[params.lang]
 
   if (!content) {
     return null
@@ -164,7 +158,7 @@ export default function Privacy(props: {
 
       <div className="mt-12 text-center text-gray-600">
         <p className="mb-4">
-          {lang === 'zh-CN' 
+          {params.lang === 'zh-CN' 
             ? '如果您有任何问题或疑虑，请联系我们：' 
             : 'If you have any questions or concerns, please contact us:'}
         </p>

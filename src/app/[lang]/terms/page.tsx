@@ -31,7 +31,7 @@ const termsContent = {
         content: [
           '关于QiApp提供的健康建议：',
           '• 建议仅供参考，不构成医疗诊断',
-          '• 用户应在专业医生指导下使用',
+          '• 用户应在专业医生指导��使用',
           '• 如有疾病症状应及时就医',
           '• 我们不对用户自行判断承担责任'
         ]
@@ -117,18 +117,12 @@ const termsContent = {
   }
 }
 
-export function generateStaticParams() {
-  return [
-    { lang: 'zh-CN' },
-    { lang: 'en-US' }
-  ] as const
-}
-
-export default function Terms(props: {
+export default function Terms({
+  params,
+}: {
   params: { lang: Locale }
 }) {
-  const { params: { lang } } = props
-  const content = termsContent[lang]
+  const content = termsContent[params.lang]
 
   if (!content) {
     return null
@@ -156,7 +150,7 @@ export default function Terms(props: {
 
       <div className="mt-12 text-center text-gray-600">
         <p className="mb-4">
-          {lang === 'zh-CN' 
+          {params.lang === 'zh-CN' 
             ? '如果您有任何问题或疑虑，请联系我们：' 
             : 'If you have any questions or concerns, please contact us:'}
         </p>
