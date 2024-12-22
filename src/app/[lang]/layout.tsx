@@ -34,12 +34,13 @@ export const metadata: Metadata = {
   },
 }
 
-type Props = {
-  children: React.ReactNode
+export default function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode,
   params: { lang: Locale }
-}
-
-export default function RootLayout({ children, params }: Props) {
+} & { params: { lang: Locale } }) {
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
