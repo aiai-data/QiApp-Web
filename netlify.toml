@@ -1,9 +1,10 @@
 [build]
-  command = "next build"
+  command = "npm run build && cp public/* out/"
   publish = "out"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NEXT_TELEMETRY_DISABLED = "1"
 
 [[redirects]]
   from = "/zh-CN/*"
