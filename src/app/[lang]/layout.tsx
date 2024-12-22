@@ -31,13 +31,12 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-  params,
-}: {
+type LayoutProps = {
   children: React.ReactNode
   params: { lang: Locale }
-}) {
+}
+
+export default function RootLayout({ children, params }: LayoutProps) {
   const { lang } = params
 
   return (
