@@ -2,6 +2,9 @@
   command = "next build"
   publish = "out"
 
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
 [[redirects]]
   from = "/zh-CN/*"
   to = "/zh-CN"
