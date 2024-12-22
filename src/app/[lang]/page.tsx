@@ -115,11 +115,11 @@ export default function Home({
           {lang === 'zh-CN' ? '立即下载' : 'Download Now'}
         </h2>
         <div className="flex justify-center space-x-6">
-          <button className="bg-black text-white px-8 py-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 flex items-center space-x-3">
+          <button className="bg-gradient-to-br from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center space-x-3 shadow-lg hover:shadow-blue-200">
             <AppleIcon />
             <span>App Store</span>
           </button>
-          <button className="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-colors duration-300 flex items-center space-x-3">
+          <button className="bg-gradient-to-br from-green-500 to-green-600 text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center space-x-3 shadow-lg hover:shadow-green-200">
             <GooglePlayIcon />
             <span>Google Play</span>
           </button>
