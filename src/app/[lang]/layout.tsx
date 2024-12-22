@@ -10,7 +10,7 @@ export function generateStaticParams() {
   return [
     { lang: 'zh-CN' },
     { lang: 'en-US' }
-  ]
+  ] as const
 }
 
 export const metadata: Metadata = {
@@ -34,16 +34,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout(props: {
+type Props = {
   children: React.ReactNode
   params: { lang: Locale }
-}) {
-  const { children, params: { lang } } = props
+}
 
+export default function RootLayout({ children, params }: Props) {
   return (
-    <html lang={lang}>
+    <html lang={params.lang}>
       <body className={inter.className}>
-        <Navigation currentLang={lang} />
+        <Navigation currentLang={params.lang} />
         <main className="min-h-screen bg-gray-50 pt-16">
           {children}
         </main>
