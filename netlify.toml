@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build:netlify && cp public/* out/"
+  command = "npm ci && npm run build:netlify && cp public/* out/"
   publish = "out"
 
 [build.environment]
