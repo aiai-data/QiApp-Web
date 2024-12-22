@@ -1,11 +1,12 @@
 [build]
-  command = "npm ci && npm run build:netlify"
+  command = "npm install && next build"
   publish = "out"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_ENV = "production"
+  NEXT_PUBLIC_BASE_URL = "https://24qi.app"
 
 [[redirects]]
   from = "/zh-CN/*"

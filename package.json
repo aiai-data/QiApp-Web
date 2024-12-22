@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--trace-warnings' next dev",
-    "build": "next build && touch out/.nojekyll",
-    "build:netlify": "CI=false next build && touch out/.nojekyll",
+    "build": "next build",
+    "build:netlify": "next build",
     "start": "next start",
     "lint": "next lint"
   },
