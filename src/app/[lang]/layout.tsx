@@ -7,7 +7,10 @@ import Navigation from '@/components/Navigation'
 const inter = Inter({ subsets: ['latin'] })
 
 export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }))
+  return [
+    { lang: 'zh-CN' },
+    { lang: 'en-US' }
+  ]
 }
 
 export const metadata: Metadata = {
@@ -31,14 +34,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode,
+export default function RootLayout(props: {
+  children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const { lang } = params
+  const { children, params: { lang } } = props
 
   return (
     <html lang={lang}>
