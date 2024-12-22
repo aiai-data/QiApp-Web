@@ -125,6 +125,13 @@ const privacyContent = {
   }
 }
 
+export function generateStaticParams() {
+  return [
+    { lang: 'zh-CN' },
+    { lang: 'en-US' }
+  ] as const
+}
+
 export default function Privacy({
   params: { lang },
 }: {
