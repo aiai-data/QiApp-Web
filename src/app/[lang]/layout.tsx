@@ -38,9 +38,9 @@ export default function RootLayout({
   children,
   params,
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode
   params: { lang: Locale }
-} & { params: { lang: Locale } }) {
+}) {
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
