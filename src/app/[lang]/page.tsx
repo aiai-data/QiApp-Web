@@ -30,7 +30,7 @@ const homeContent = {
     features: [
       {
         title: '元气时钟',
-        description: '基于传统经络理论，为您提供实时的健康指导',
+        description: '基于传统经络理论的实时的健康指导',
         icon: SunIcon,
         subFeatures: [
           '经典12时辰表盘显示',
@@ -82,7 +82,7 @@ const homeContent = {
         icon: BellAlertIcon,
         subFeatures: [
           '经络时间智能提醒',
-          '养生作息建议',
+          '作息建议',
           '穴位按摩时间',
           '个性化提醒设置',
           '睡眠周期优化'
@@ -266,40 +266,43 @@ export default async function Home({ params }: HomeProps) {
       {/* Features Section */}
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {content.features.map((feature, index) => (
               <div 
                 key={index} 
-                className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/90 to-white/50 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/70 to-blue-50/30 backdrop-blur-sm"></div>
                 <div className="relative">
-                  <div className="mb-4">
-                    <feature.icon 
-                      className="w-12 h-12 text-blue-500 group-hover:text-blue-600 transition-colors"
-                      aria-hidden="true"
-                    />
+                  <div className="flex items-center mb-6">
+                    <div className="p-3 rounded-xl bg-blue-50 group-hover:bg-blue-100 transition-colors">
+                      <feature.icon 
+                        className="w-8 h-8 text-blue-500 group-hover:text-blue-600 transition-colors"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold ml-4 text-gray-800">
+                      {feature.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-800">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-base text-gray-600 mb-6 leading-relaxed">
                     {feature.description}
                   </p>
                   {'subFeatures' in feature && (
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {feature.subFeatures.map((subFeature, i) => (
                         <li 
                           key={i} 
-                          className="flex items-center text-sm text-gray-600 transition-colors duration-200 hover:text-gray-800"
+                          className="flex items-start text-sm text-gray-600 transition-colors duration-200 hover:text-gray-800 group/item"
                         >
-                          <span className="w-1 h-1 rounded-full bg-blue-500 mr-2"></span>
-                          {subFeature}
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3 mt-2 group-hover/item:bg-blue-600 transition-colors"></span>
+                          <span className="flex-1">{subFeature}</span>
                         </li>
                       ))}
                     </ul>
                   )}
                 </div>
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-100/30 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
             ))}
           </div>
