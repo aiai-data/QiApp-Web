@@ -16,6 +16,7 @@ const nextConfig = {
   },
   env: {
     NEXT_PUBLIC_SITE_URL: 'https://24qi.app',
+    NEXT_PUBLIC_DOMAIN: '24qi.app'
   },
   async headers() {
     return [

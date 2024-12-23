@@ -9,18 +9,6 @@
   NEXT_PUBLIC_BASE_URL = "https://24qi.app"
 
 [[redirects]]
-  from = "http://*"
-  to = "https://:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://www.24qi.app/*"
-  to = "https://24qi.app/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/*"
   to = "/zh-CN/"
   status = 302
@@ -29,4 +17,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
