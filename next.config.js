@@ -10,7 +10,9 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
+  basePath: '',
+  assetPrefix: '',
 }
 
 module.exports = nextConfig 

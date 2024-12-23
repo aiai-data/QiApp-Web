@@ -9,8 +9,18 @@
   NEXT_PUBLIC_BASE_URL = "https://24qi.app"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/"
+  to = "/zh-CN/"
+  status = 302
+
+[[redirects]]
+  from = "/en-US/*"
+  to = "/en-US/"
+  status = 200
+
+[[redirects]]
+  from = "/zh-CN/*"
+  to = "/zh-CN/"
   status = 200
 
 [[headers]]
