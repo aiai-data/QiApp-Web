@@ -3,13 +3,14 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Locale } from '@/constants/locales'
 import Navigation from '@/components/Navigation'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export function generateStaticParams() {
   return [
-    { lang: 'zh-CN' },
-    { lang: 'en-US' }
+    { lang: 'en-US' },
+    { lang: 'zh-CN' }
   ] as const
 }
 
@@ -34,21 +35,49 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+interface LayoutProps {
+  children: React.ReactNode;
+  params: { lang: Locale };
+}
+
+export default async function RootLayout({
   children,
   params,
-}: {
-  children: React.ReactNode
-  params: { lang: Locale }
-}) {
+}: LayoutProps) {
+  const resolvedParams = await params;
+  
   return (
-    <html lang={params.lang}>
+    <html lang={resolvedParams.lang}>
       <body className={inter.className}>
-        <Navigation currentLang={params.lang} />
-        <main className="min-h-screen bg-gray-50 pt-16">
-          {children}
-        </main>
+        <div className="flex flex-col min-h-screen">
+          <Navigation currentLang={resolvedParams.lang} />
+          <main className="flex-grow bg-gradient-to-b from-gray-50 to-white pt-16">
+            {children}
+          </main>
+          <footer className="py-8 bg-gradient-to-t from-gray-50 to-white">
+            <div className="max-w-5xl mx-auto px-6 text-center">
+              <div className="space-x-6 mb-6">
+                <Link 
+                  href={`/${resolvedParams.lang}/privacy`}
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  {resolvedParams.lang === 'zh-CN' ? '隐私政策' : 'Privacy Policy'}
+                </Link>
+                <span className="text-gray-300">|</span>
+                <Link 
+                  href={`/${resolvedParams.lang}/terms`}
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  {resolvedParams.lang === 'zh-CN' ? '服务条款' : 'Terms of Service'}
+                </Link>
+              </div>
+              <p className="text-gray-500">
+                © 2024 QiApp. {resolvedParams.lang === 'zh-CN' ? '保留所有权利。' : 'All rights reserved.'}
+              </p>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
-  )
+  );
 } 

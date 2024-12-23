@@ -1,56 +1,39 @@
 'use client'
 
 import Link from 'next/link'
-import { Locale, localeNames } from '@/constants/locales'
+import { usePathname } from 'next/navigation'
+import { Locale } from '@/constants/locales'
 
-export default function Navigation({ currentLang }: { currentLang: Locale }) {
+interface NavigationProps {
+  currentLang: Locale
+}
+
+export default function Navigation({ currentLang }: NavigationProps) {
+  const pathname = usePathname()
+  const switchLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN'
+  const langText = currentLang === 'zh-CN' ? 'English' : '中文'
+
+  // 获取当前页面路径（移除语言部分）
+  const currentPath = pathname.replace(`/${currentLang}`, '') || '/'
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-6xl mx-auto bg-white shadow rounded-b-lg">
-        <nav className="max-w-5xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href={`/${currentLang}`} className="font-bold text-xl">
-                QiApp
-              </Link>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <Link 
-                href={`/${currentLang}/privacy`}
-                className="text-gray-600 hover:text-gray-900"
-              >
-                {currentLang === 'zh-CN' ? '隐私政策' : 'Privacy Policy'}
-              </Link>
-              <Link 
-                href={`/${currentLang}/terms`}
-                className="text-gray-600 hover:text-gray-900"
-              >
-                {currentLang === 'zh-CN' ? '服务条款' : 'Terms of Service'}
-              </Link>
-              
-              <div className="relative ml-4">
-                <select 
-                  className="appearance-none bg-white border rounded px-3 py-1"
-                  value={currentLang}
-                  onChange={(e) => {
-                    window.location.pathname = window.location.pathname.replace(
-                      currentLang,
-                      e.target.value
-                    )
-                  }}
-                >
-                  {Object.entries(localeNames).map(([locale, name]) => (
-                    <option key={locale} value={locale}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center">
+      <div className="w-full max-w-5xl">
+        <div className="relative rounded-b-2xl overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white backdrop-blur-xl"></div>
+          <div className="relative px-6 h-16 flex items-center justify-between">
+            <Link href={`/${currentLang}`} className="text-xl font-bold text-gray-800">
+              QiApp
+            </Link>
+            <Link
+              href={`/${switchLang}${currentPath}`}
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {langText}
+            </Link>
           </div>
-        </nav>
+        </div>
       </div>
-    </div>
+    </nav>
   )
 } 

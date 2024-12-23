@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm run build"
   publish = "out"
 
 [build.environment]
@@ -9,16 +9,14 @@
   NEXT_PUBLIC_BASE_URL = "https://24qi.app"
 
 [[redirects]]
-  from = "/zh-CN/*"
-  to = "/zh-CN"
-  status = 200
-
-[[redirects]]
-  from = "/en-US/*"
-  to = "/en-US"
-  status = 200
-
-[[redirects]]
   from = "/*"
-  to = "/zh-CN"
-  status = 200 
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

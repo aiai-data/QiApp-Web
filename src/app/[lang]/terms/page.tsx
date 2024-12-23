@@ -1,5 +1,9 @@
 import { Locale } from '@/constants/locales'
 
+interface TermsProps {
+  params: { lang: Locale };
+}
+
 const termsContent = {
   'zh-CN': {
     title: '服务条款',
@@ -31,7 +35,7 @@ const termsContent = {
         content: [
           '关于QiApp提供的健康建议：',
           '• 建议仅供参考，不构成医疗诊断',
-          '• 用户应在专业医生指导��使用',
+          '• 用户应在专业医生指导下使用',
           '• 如有疾病症状应及时就医',
           '• 我们不对用户自行判断承担责任'
         ]
@@ -115,17 +119,14 @@ const termsContent = {
       }
     ]
   }
-}
+} as const;
 
-export default function Terms({
-  params,
-}: {
-  params: { lang: Locale }
-}) {
-  const content = termsContent[params.lang]
+export default async function Terms({ params }: TermsProps) {
+  const resolvedParams = await params;
+  const content = termsContent[resolvedParams.lang];
 
   if (!content) {
-    return null
+    return <div>Error: Content not found for the specified language</div>;
   }
 
   return (
@@ -150,7 +151,7 @@ export default function Terms({
 
       <div className="mt-12 text-center text-gray-600">
         <p className="mb-4">
-          {params.lang === 'zh-CN' 
+          {resolvedParams.lang === 'zh-CN' 
             ? '如果您有任何问题或疑虑，请联系我们：' 
             : 'If you have any questions or concerns, please contact us:'}
         </p>
@@ -162,5 +163,12 @@ export default function Terms({
         </a>
       </div>
     </div>
-  )
+  );
+}
+
+export function generateStaticParams() {
+  return [
+    { lang: 'en-US' },
+    { lang: 'zh-CN' }
+  ] as const;
 } 

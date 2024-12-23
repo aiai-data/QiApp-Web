@@ -1,130 +1,319 @@
 import { Locale } from '@/constants/locales'
+import Link from 'next/link'
+import Image from 'next/image'
+import { 
+  SunIcon, // 元气时钟
+  SparklesIcon, // 经络信息
+  CalendarIcon, // 健康日历
+  ClipboardDocumentCheckIcon, // 健康自测
+  BellAlertIcon, // 智能闹钟
+  UserCircleIcon // 个人中心
+} from '@heroicons/react/24/outline'
 
-const AppleIcon = () => (
-  <svg viewBox="0 0 384 512" className="w-6 h-6 fill-current">
-    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-  </svg>
-)
-
-const GooglePlayIcon = () => (
-  <svg viewBox="0 0 512 512" className="w-6 h-6 fill-current">
-    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
-  </svg>
-)
-
-const features = {
-  'zh-CN': [
-    {
-      title: '元气时钟',
-      description: '基于子午流注理论，为您展示人体经络能量的变化规律',
-      icon: '🕐'
+const homeContent = {
+  'zh-CN': {
+    hero: {
+      title: 'QiApp',
+      subtitle: '您的智能健康管理助手',
+      description: '融合传统经络理论与现代健康理念，为您提供全方位的健康管理服务',
+      downloads: {
+        appStore: {
+          text: 'App Store 下载',
+          url: '#', // 替换为实际的 App Store 链接
+        },
+        googlePlay: {
+          text: '安卓商店下载',
+          url: '#', // 替换为实际的 Google Play 链接
+        }
+      }
     },
-    {
-      title: '芳疗指南',
-      description: '专业的精油使用指导，帮助您选择适合的精油及使用方法',
-      icon: '🌿'
-    },
-    {
-      title: '健康食谱',
-      description: '根据节气和体质，推荐适合的饮食方案和营养食谱',
-      icon: '🥗'
-    },
-    {
-      title: '运动健身',
-      description: '提供个性化的运动建议和健身计划，帮助您保持健康体魄',
-      icon: '💪'
-    },
-    {
-      title: '专家咨询',
-      description: '汇集专业健康顾问的建议，为您提供权威的健康指导',
-      icon: '👨‍⚕️'
-    },
-    {
-      title: '健康记录',
-      description: '记录和分析您的健康数据，追踪健康状况的变化',
-      icon: '📊'
+    features: [
+      {
+        title: '元气时钟',
+        description: '基于传统经络理论，为您提供实时的健康指导',
+        icon: SunIcon,
+        subFeatures: [
+          '经典12时辰表盘显示',
+          '现代24小时制切换',
+          '实时经络运行状态',
+          '当前时辰养生要点',
+          '穴位保健建议'
+        ]
+      },
+      {
+        title: '经络信息',
+        description: '全面的经络健康知识库',
+        icon: SparklesIcon,
+        subFeatures: [
+          '十二经脉详细图解',
+          '穴位定位与功效',
+          '经络病症早期信号',
+          '常见病症溯源分析',
+          '养生保健方案'
+        ]
+      },
+      {
+        title: '健康日历',
+        description: '结合节气的健康管理助手',
+        icon: CalendarIcon,
+        subFeatures: [
+          '24节气健康提醒',
+          '个人健康记录',
+          '作息规律分析',
+          '饮食起居建议',
+          '节气养生方案'
+        ]
+      },
+      {
+        title: '健康自测',
+        description: '智能化的健康评估系统',
+        icon: ClipboardDocumentCheckIcon,
+        subFeatures: [
+          '六经辨证分析',
+          '精油使用指南',
+          '普拉提和健身建议',
+          '健康食谱推荐',
+          '专家咨询服务'
+        ]
+      },
+      {
+        title: '智能闹钟',
+        description: '基于经络规律的健康提醒',
+        icon: BellAlertIcon,
+        subFeatures: [
+          '经络时间智能提醒',
+          '养生作息建议',
+          '穴位按摩时间',
+          '个性化提醒设置',
+          '睡眠周期优化'
+        ]
+      },
+      {
+        title: '个人中心',
+        description: '管理您的健康数据、设置和偏好',
+        icon: UserCircleIcon,
+        subFeatures: [
+          '健康档案管理',
+          '个性化设置',
+          '数据统计分析',
+          '进度追踪',
+          '目标设定'
+        ]
+      }
+    ],
+    footer: {
+      privacyText: '隐私政策',
+      termsText: '服务条款',
+      copyright: '© 2024 QiApp. 保留所有权利。'
     }
-  ],
-  'en-US': [
-    {
-      title: 'Qi Clock',
-      description: 'Track meridian energy flow based on traditional Chinese medicine',
-      icon: '🕐'
+  },
+  'en-US': {
+    hero: {
+      title: 'QiApp',
+      subtitle: 'Your Smart Health Management Assistant',
+      description: 'Combining traditional meridian theory with modern health concepts for comprehensive health management',
+      downloads: {
+        appStore: {
+          text: 'Download on App Store',
+          url: '#', // Replace with actual App Store link
+        },
+        googlePlay: {
+          text: 'Get it on Google Play',
+          url: '#', // Replace with actual Google Play link
+        }
+      }
     },
-    {
-      title: 'Aromatherapy',
-      description: 'Professional guidance on essential oil selection and application methods',
-      icon: '🌿'
-    },
-    {
-      title: 'Healthy Recipes',
-      description: 'Personalized diet plans and nutritious recipes based on seasons and body constitution',
-      icon: '🥗'
-    },
-    {
-      title: 'Fitness Guide',
-      description: 'Customized exercise recommendations and workout plans',
-      icon: '💪'
-    },
-    {
-      title: 'Expert Advice',
-      description: 'Professional health consultants providing authoritative guidance',
-      icon: '👨‍⚕️'
-    },
-    {
-      title: 'Health Tracking',
-      description: 'Record and analyze your health data to monitor progress',
-      icon: '📊'
+    features: [
+      {
+        title: 'Qi Clock',
+        description: 'Real-time health guidance based on traditional meridian theory',
+        icon: SunIcon,
+        subFeatures: [
+          'Traditional 12-hour system',
+          'Modern 24-hour display',
+          'Real-time meridian status',
+          'Current time health tips',
+          'Acupoint care suggestions'
+        ]
+      },
+      {
+        title: 'Meridian Info',
+        description: 'Comprehensive meridian health knowledge base',
+        icon: SparklesIcon,
+        subFeatures: [
+          'Detailed 12 meridians guide',
+          'Acupoint location & effects',
+          'Early warning signals',
+          'Common symptoms analysis',
+          'Health maintenance plans'
+        ]
+      },
+      {
+        title: 'Health Calendar',
+        description: 'Health management with solar terms',
+        icon: CalendarIcon,
+        subFeatures: [
+          '24 Solar Terms reminders',
+          'Personal health records',
+          'Routine analysis',
+          'Lifestyle suggestions',
+          'Seasonal health tips'
+        ]
+      },
+      {
+        title: 'Health Assessment',
+        description: 'Smart health evaluation system',
+        icon: ClipboardDocumentCheckIcon,
+        subFeatures: [
+          'Six Meridians Analysis',
+          'Essential Oil Guide',
+          'Pilates & Fitness Tips',
+          'Healthy Recipe Recommendations',
+          'Expert Consultation'
+        ]
+      },
+      {
+        title: 'Smart Alarm',
+        description: 'Health reminders based on meridian patterns',
+        icon: BellAlertIcon,
+        subFeatures: [
+          'Meridian-based reminders',
+          'Wellness routine tips',
+          'Acupoint massage timing',
+          'Personalized alerts',
+          'Sleep cycle optimization'
+        ]
+      },
+      {
+        title: 'User Center',
+        description: 'Manage your health data and preferences',
+        icon: UserCircleIcon,
+        subFeatures: [
+          'Health profile management',
+          'Personalization settings',
+          'Data analytics',
+          'Progress tracking',
+          'Goal setting'
+        ]
+      }
+    ],
+    footer: {
+      privacyText: 'Privacy Policy',
+      termsText: 'Terms of Service',
+      copyright: '© 2024 QiApp. All rights reserved.'
     }
-  ]
+  }
+} as const;
+
+interface HomeProps {
+  params: { lang: Locale }
 }
 
-export default function Home({
-  params: { lang },
-}: {
-  params: { lang: Locale }
-}) {
+export default async function Home({ params }: HomeProps) {
+  const resolvedParams = await params;
+  const content = homeContent[resolvedParams.lang];
+
+  if (!content) {
+    return <div>Error: Content not found</div>;
+  }
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="text-center mb-16">
-        <h1 className="text-5xl font-bold mb-6">
-          {lang === 'zh-CN' ? 'QiApp 健康助手' : 'QiApp Health Assistant'}
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          {lang === 'zh-CN' 
-            ? '基于传统经络理论的现代健康管理工具'
-            : 'Modern health management tool based on traditional meridian theory'}
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {features[lang].map((feature, index) => (
-          <div 
-            key={index}
-            className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 border border-gray-100"
-          >
-            <div className="text-4xl mb-4">{feature.icon}</div>
-            <h2 className="text-xl font-semibold mb-2">{feature.title}</h2>
-            <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 to-white/50 backdrop-blur-xl"></div>
+        <div className="relative max-w-5xl mx-auto px-6 py-24 text-center">
+          <h1 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            {content.hero.title}
+          </h1>
+          <h2 className="text-4xl font-semibold mb-6 text-gray-800">
+            {content.hero.subtitle}
+          </h2>
+          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            {content.hero.description}
+          </p>
+          <div className="flex justify-center space-x-6">
+            <a
+              href={content.hero.downloads.appStore.url}
+              className="group relative overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white transition-all duration-300 hover:scale-105 flex items-center"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <Image 
+                src="/app-store-icon.svg" 
+                alt="App Store" 
+                width={24} 
+                height={24} 
+                className="mr-3"
+              />
+              <span className="relative">{content.hero.downloads.appStore.text}</span>
+            </a>
+            <a
+              href={content.hero.downloads.googlePlay.url}
+              className="group relative overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-white transition-all duration-300 hover:scale-105 flex items-center"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <Image 
+                src="/google-play-icon.svg" 
+                alt="Google Play" 
+                width={24} 
+                height={24} 
+                className="mr-3"
+              />
+              <span className="relative">{content.hero.downloads.googlePlay.text}</span>
+            </a>
           </div>
-        ))}
-      </div>
-
-      <div className="mt-20 text-center">
-        <h2 className="text-3xl font-bold mb-8">
-          {lang === 'zh-CN' ? '立即下载' : 'Download Now'}
-        </h2>
-        <div className="flex justify-center space-x-6">
-          <button className="bg-gradient-to-br from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center space-x-3 shadow-lg hover:shadow-blue-200">
-            <AppleIcon />
-            <span>App Store</span>
-          </button>
-          <button className="bg-gradient-to-br from-green-500 to-green-600 text-white px-8 py-4 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center space-x-3 shadow-lg hover:shadow-green-200">
-            <GooglePlayIcon />
-            <span>Google Play</span>
-          </button>
         </div>
-      </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {content.features.map((feature, index) => (
+              <div 
+                key={index} 
+                className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/90 to-white/50 backdrop-blur-sm"></div>
+                <div className="relative">
+                  <div className="mb-4">
+                    <feature.icon 
+                      className="w-12 h-12 text-blue-500 group-hover:text-blue-600 transition-colors"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  {'subFeatures' in feature && (
+                    <ul className="space-y-2">
+                      {feature.subFeatures.map((subFeature, i) => (
+                        <li 
+                          key={i} 
+                          className="flex items-center text-sm text-gray-600 transition-colors duration-200 hover:text-gray-800"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-blue-500 mr-2"></span>
+                          {subFeature}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
-  )
+  );
+}
+
+export function generateStaticParams() {
+  return [
+    { lang: 'en-US' },
+    { lang: 'zh-CN' }
+  ] as const;
 } 

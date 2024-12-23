@@ -1,4 +1,8 @@
-import { Locale } from '@/constants/locales'
+import { Locale } from '@/constants/locales';
+
+interface PrivacyProps {
+  params: { lang: Locale };
+}
 
 const privacyContent = {
   'zh-CN': {
@@ -9,55 +13,55 @@ const privacyContent = {
         title: '1. 信息收集',
         content: [
           '我们收集的信息包括：',
-          '• 账户信息（用户ID、账户状态、订阅信息等）',
-          '• 基本个人信息（年龄、性别）',
-          '• 位置信息（居住地）',
-          '• 健康自测数据（问答结果、健康状况记录）',
-          '• 设备信息（设备型号、操作系统版本）',
-          '• 使用数据（应用使用频率、功能偏好）'
+          '• 基础账户信息（用户ID、昵称）：用于识别用户身份，提供个性化服务体验',
+          '• 个人特征信息（年龄、性别、所在地）：用于生成更准确的健康建议',
+          '• 健康数据（自测问答记录）：用于分析症状，提供健康建议',
+          '• 使用数据（使用习惯和偏好）：用于改进服务质量',
+          '• 设备信息：用于确保服务的安全性和稳定性'
         ]
       },
       {
         title: '2. 信息使用',
         content: [
-          '我们使用收集的信息用于：',
-          '• 验证用户身份和服务权限',
-          '• 根据年龄性别提供更准确的健康建议',
-          '• 结合居住地天气情况提供针对性的养生建议',
-          '• 基于健康自测结果分析用户健康状况',
-          '• 持续优化和改进服务质量',
-          '• 发送重要通知和服务更新'
+          '我们使用收集的信息：',
+          '• 提供个性化的健康建议和养生方案',
+          '• 改进和优化我们的服务',
+          '• 发送服务通知和健康提醒',
+          '• 进行数据分析和研究',
+          '• 验证购买的服务和提供客户支持'
         ]
       },
       {
-        title: '3. 数据存储和保护',
+        title: '3. 信息保护',
         content: [
-          '我们采取多重措施保护您的信息：',
-          '• 使用行业标准的加密技术保护数据存储和传输',
-          '• 实施严格的内部数据访问控制',
-          '• 定期进行安全评估和系统更新',
-          '• 遵守相关法律法规要求',
-          '• 制定数据安全应急响应预案'
+          '我们采取以下措施保护您的信息：',
+          '• 采用业界标准的加密技术保护数据传输和存储',
+          '• 实施严格的访问控制机制',
+          '• 定期进行安全评估和审计',
+          '• 对员工进行隐私保护培训',
+          '• 及时更新安全措施以应对新的安全挑战'
         ]
       },
       {
         title: '4. 信息共享',
         content: [
-          '我们不会出售您的个人信息。仅在以下情况下共享信息：',
-          '• 经您明确同意',
+          '在以下情况下可能共享信息：',
+          '• 获得您的明确授权',
           '• 法律法规要求',
           '• 保护用户权益和公共安全',
-          '• 与授权合作伙伴共同提供服务'
+          '• 与授权合作伙伴共享以提供服务',
+          '注意：我们绝不会出售您的个人信息'
         ]
       },
       {
         title: '5. 用户权利',
         content: [
           '您对个人信息拥有以下权利：',
-          '• 访问和导出数据',
-          '• 更正或更新信息',
-          '• 删除账户和相关数据',
-          '• 选择退出某些数据收集'
+          '• 访问和查看个人信息',
+          '• 更正或更新个人信息',
+          '• 删除个人信息',
+          '• 撤回授权同意',
+          '• 导出个人数据'
         ]
       }
     ]
@@ -70,70 +74,67 @@ const privacyContent = {
         title: '1. Information Collection',
         content: [
           'We collect the following information:',
-          '• Account information (user ID, account status, subscription details)',
-          '• Basic personal information (age, gender)',
-          '• Location information (place of residence)',
-          '• Health assessment data (Q&A results, health condition records)',
-          '• Device information (device model, OS version)',
-          '• Usage data (app usage frequency, feature preferences)'
+          '• Basic Account Information (User ID, Nickname): For user identification and personalized service',
+          '• Personal Characteristics (Age, Gender, Location): For generating accurate health advice',
+          '• Health Data (Assessment Results): For symptom analysis and health recommendations',
+          '• Usage Data (Habits and Preferences): For service improvement',
+          '• Device Information: For security and stability'
         ]
       },
       {
         title: '2. Information Usage',
         content: [
-          'We use the collected information to:',
-          '• Verify user identity and service access',
-          '• Provide more accurate health advice based on age and gender',
-          '• Offer weather-based health recommendations for your location',
-          '• Analyze user health conditions based on assessment results',
-          '• Continuously optimize and improve service quality',
-          '• Send important notifications and service updates'
+          'We use collected information to:',
+          '• Provide personalized health advice and wellness plans',
+          '• Improve and optimize our services',
+          '• Send service notifications and health reminders',
+          '• Conduct data analysis and research',
+          '• Verify purchased services and provide customer support'
         ]
       },
       {
-        title: '3. Data Storage and Protection',
+        title: '3. Information Protection',
         content: [
           'We protect your information through:',
-          '• Industry-standard encryption for data storage and transmission',
-          '• Strict internal data access controls',
-          '• Regular security assessments and system updates',
-          '• Compliance with applicable laws and regulations',
-          '• Data security incident response procedures'
+          '• Industry-standard encryption for data transmission and storage',
+          '• Strict access control mechanisms',
+          '• Regular security assessments and audits',
+          '• Employee privacy protection training',
+          '• Timely security measure updates'
         ]
       },
       {
         title: '4. Information Sharing',
         content: [
-          'We do not sell your personal information. We only share information:',
-          '• With your explicit consent',
-          '• When required by law',
-          '• To protect user rights and public safety',
-          '• With authorized partners to provide services'
+          'Information may be shared when:',
+          '• We have your explicit authorization',
+          '• Required by law',
+          '• Protecting user rights and public safety',
+          '• Sharing with authorized partners for service provision',
+          'Note: We never sell your personal information'
         ]
       },
       {
         title: '5. User Rights',
         content: [
           'You have the following rights regarding your personal information:',
-          '• Access and export your data',
-          '• Correct or update information',
-          '• Delete account and related data',
-          '• Opt-out of certain data collection'
+          '• Access and view personal information',
+          '• Correct or update personal information',
+          '• Delete personal information',
+          '• Withdraw consent',
+          '• Export personal data'
         ]
       }
     ]
   }
-}
+} as const;
 
-export default function Privacy({
-  params,
-}: {
-  params: { lang: Locale }
-}) {
-  const content = privacyContent[params.lang]
+export default async function Privacy({ params }: PrivacyProps) {
+  const resolvedParams = await params;
+  const content = privacyContent[resolvedParams.lang];
 
   if (!content) {
-    return null
+    return <div>Error: Content not found for the specified language</div>;
   }
 
   return (
@@ -155,20 +156,13 @@ export default function Privacy({
           </section>
         ))}
       </div>
-
-      <div className="mt-12 text-center text-gray-600">
-        <p className="mb-4">
-          {params.lang === 'zh-CN' 
-            ? '如果您有任何问题或疑虑，请联系我们：' 
-            : 'If you have any questions or concerns, please contact us:'}
-        </p>
-        <a 
-          href="mailto:privacy@qiapp.com" 
-          className="text-blue-600 hover:text-blue-800"
-        >
-          privacy@qiapp.com
-        </a>
-      </div>
     </div>
-  )
+  );
+}
+
+export function generateStaticParams() {
+  return [
+    { lang: 'en-US' },
+    { lang: 'zh-CN' }
+  ] as const;
 } 
