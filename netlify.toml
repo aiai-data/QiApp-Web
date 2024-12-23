@@ -8,14 +8,18 @@
   NODE_ENV = "production"
   NEXT_PUBLIC_BASE_URL = "https://24qi.app"
 
-# 确保 www 重定向到主域名
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "https://www.24qi.app/*"
   to = "https://24qi.app/:splat"
   status = 301
   force = true
 
-# 语言重定向
 [[redirects]]
   from = "/*"
   to = "/zh-CN/"
@@ -30,10 +34,3 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-
-# 强制 HTTPS
-[[redirects]]
-  from = "http://*"
-  to = "https://:splat"
-  status = 301
-  force = true
