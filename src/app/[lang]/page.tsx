@@ -237,29 +237,27 @@ export default async function Home({ params }: HomeProps) {
               href={content.hero.downloads.appStore.url}
               className="group relative overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white transition-all duration-300 hover:scale-105 flex items-center"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <Image 
                 src="/app-store-icon.svg" 
                 alt="App Store" 
                 width={24} 
                 height={24} 
-                className="mr-3"
+                className="mr-3 relative z-10"
               />
-              <span className="relative">{content.hero.downloads.appStore.text}</span>
+              <span className="relative z-10">{content.hero.downloads.appStore.text}</span>
             </a>
             <a
               href={content.hero.downloads.googlePlay.url}
               className="group relative overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-white transition-all duration-300 hover:scale-105 flex items-center"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <Image 
                 src="/google-play-icon.svg" 
                 alt="Google Play" 
                 width={24} 
                 height={24} 
-                className="mr-3"
+                className="mr-3 relative z-10"
               />
-              <span className="relative">{content.hero.downloads.googlePlay.text}</span>
+              <span className="relative z-10">{content.hero.downloads.googlePlay.text}</span>
             </a>
           </div>
         </div>
