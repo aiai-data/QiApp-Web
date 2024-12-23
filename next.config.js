@@ -11,8 +11,16 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  basePath: '',
-  assetPrefix: '',
+  experimental: {
+    appDir: true,
+  },
+  generateStaticParams: async () => {
+    return {
+      '/': { dynamic: false },
+      '/zh-CN': { dynamic: false },
+      '/en-US': { dynamic: false },
+    }
+  }
 }
 
 module.exports = nextConfig 
