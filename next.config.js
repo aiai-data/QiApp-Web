@@ -14,12 +14,8 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  generateStaticParams: async () => {
-    return {
-      '/': { dynamic: false },
-      '/zh-CN': { dynamic: false },
-      '/en-US': { dynamic: false },
-    }
+  env: {
+    NEXT_PUBLIC_SITE_URL: 'https://24qi.app',
   }
 }
 
